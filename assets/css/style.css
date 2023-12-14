@@ -1,0 +1,525 @@
+/*import poppins font*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+
+/*Global Styling*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #bed6cb;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  padding: 0;
+  margin: 0;
+  color: #186f65;
+}
+
+input {
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #186f65;
+  font-size: 1.2rem;
+}
+
+input:focus {
+  border: 1px solid #186f65;
+}
+
+button[type="submit"],
+.btn {
+  background-color: #b5cb99;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button[type="submit"]:hover {
+  opacity: 0.7;
+}
+
+section {
+  background-color: white;
+}
+
+section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* === HEADER === */
+header {
+  text-align: center;
+}
+
+/* === MAIN === */
+main {
+  display: grid;
+  grid-template-areas:
+    "form form progress"
+    "shelf shelf shelf";
+  gap: 1rem;
+}
+
+/* =============== Form Section =============== */
+#form-section {
+  grid-area: form;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #bed6cb;
+  gap: 1rem;
+}
+#form-section .input-book-box,
+#form-section .search-box {
+  width: 100%;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 1rem 1.2rem;
+}
+
+/* Input Form */
+#form-section .input-book-box form {
+  display: grid;
+  grid-template-areas:
+    "title author"
+    "year isCompleted"
+    "submit submit";
+  gap: 1rem;
+}
+#form-section .input-book-box form .input {
+  display: flex;
+  flex-direction: column;
+}
+#form-section .input-book-box form .input-inline {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding-top: 3rem;
+  padding-left: 1rem;
+}
+#form-section .input-book-box form button[type="submit"] {
+  margin-top: 2rem;
+  grid-area: submit;
+}
+
+/* Search Bok */
+#form-section .search-box form {
+  display: grid;
+  grid-template-columns: 1.5fr 7fr 3fr;
+}
+#form-section .search-box form button {
+  margin-left: 1rem;
+}
+#form-section .search-box {
+  text-align: start;
+}
+
+/* ============ Shelves Section ============= */
+#shelves-section {
+  grid-area: shelf;
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+#shelves-section .book-shelf {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  height: 18rem;
+}
+#shelves-section .book-shelf #uncompletedBooks,
+#shelves-section .book-shelf #completedBooks {
+  position: absolute;
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.3s ease;
+}
+
+/* UncomlitedBooks in other word books you have to reed */
+#shelves-section .book-shelf .book {
+  display: flex;
+  width: 22rem;
+  height: 12rem;
+  /*background-color: #a1c2b2;*/
+  background-color: #bed6cb;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+#shelves-section .book-shelf .book img {
+  width: fit-content;
+  height: auto;
+  border-radius: 1rem 0 0 1rem;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+}
+#shelves-section .book-shelf .book .book-content {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  z-index: inherit;
+}
+#shelves-section .book-shelf .book .book-content span {
+  font-size: 0.75rem;
+}
+#shelves-section .book-shelf .book .book-content .book-info {
+  display: flex;
+  flex-direction: column;
+}
+#shelves-section .book-shelf .book .book-content .book-info h3 {
+  line-height: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+#shelves-section .book-shelf .book .book-content .intract-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+#shelves-section .book-shelf .book .book-content .intract-btn .btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  cursor: pointer;
+}
+#shelves-section .book-shelf .book .book-content .intract-btn .btn:hover {
+  opacity: 0.7;
+}
+.btn.remove {
+  color: #f0f0f0;
+  background-color: rgb(245, 52, 91);
+}
+.slider {
+  top: -12px;
+  right: 2rem;
+  position: absolute;
+  font-size: 2rem;
+  color: #a5a5a5;
+}
+.slider i:hover {
+  color: black;
+}
+
+/* ============ Progress Section ============ */
+#progress-section {
+  grid-area: progress;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  padding-bottom: 2rem;
+  gap: 1rem;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#progress-section h2 {
+  align-self: flex-start;
+}
+#progress-section .container {
+  position: relative;
+  width: 24rem;
+  overflow: hidden;
+  height: 100%;
+}
+
+#progress-section .progressBookList {
+  top: 0;
+  left: 0;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+#progress-section .progress-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  background-color: #bed6cb;
+  min-width: 18rem;
+  width: 100%;
+  height: 6rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  padding: 0.75rem;
+  padding-right: 1.5rem;
+  border-radius: 10px;
+  flex-shrink: 1;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+#progress-section .progress-card .progress-img {
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+#progress-section .progress-card .progress-content {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+}
+#progress-section .progress-card .progress-content span {
+  margin-top: 0.25rem;
+  display: block;
+  text-align: end;
+}
+#progress-section .progress-card .progress-content::after,
+#progress-section .progress-card .progress-content::before {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  height: 5px;
+  border-radius: 5px;
+}
+#progress-section .progress-card .progress-content::before {
+  width: 100%;
+  background-color: #a5a5a5;
+}
+#progress-section .progress-card .progress-content::after {
+  width: 50%;
+  background-color: #b5cb99;
+}
+#progress-section .progressSlider {
+  font-size: 1.75rem;
+  top: 2rem;
+  right: 40%;
+  display: flex;
+  gap: 2rem;
+}
+
+/* =============== EDIT MODAL =================== */
+#editModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  z-index: 1;
+}
+#editModal #editBook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+#editModal #editBook label {
+  display: block;
+}
+#editModal .modal-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#editModal .edit-close-btn {
+  color: #888;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ==== TOAST NOTIFICATION ==== */
+#toastNotification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 99999;
+}
+
+/* define color for toastNotification type */
+#toastNotification .success i {
+  color: #4caf50;
+}
+#toastNotification .error i {
+  color: #c63d2f;
+}
+#toastNotification .warning i {
+  color: #e9bd0c;
+}
+
+#toastNotification .toast {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 18rem;
+  padding: 1rem;
+  padding-right: 3rem;
+  background-color: #f8e9c2;
+  border-radius: 0.75rem 0.25rem 0.25rem 0.75rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  animation: showToast 0.4s forwards;
+}
+#toastNotification .toast.closed {
+  animation: closeToast 0.4s forwards;
+}
+@keyframes showToast {
+  100% {
+    transform: translateX(0);
+  }
+  0% {
+    transform: translateX(calc(100% + 1rem));
+  }
+}
+@keyframes closeToast {
+  100% {
+    transform: translateX(calc(100% + 1rem));
+  }
+  0% {
+    transform: translateX(0);
+  }
+}
+
+#toastNotification .toast.success::after {
+  background-color: #4caf50;
+}
+#toastNotification .toast.warning::after {
+  background-color: #e9bd0c;
+}
+#toastNotification .toast.error::after {
+  background-color: #c63d2f;
+}
+#toastNotification .toast::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  animation: leftDisappear 4s forwards ease-in;
+}
+@keyframes leftDisappear {
+  100% {
+    width: 0%;
+  }
+}
+#toastNotification .toast .message i {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+#toastNotification i.close {
+  font-size: 1.2rem;
+  position: absolute;
+  right: 15px;
+  color: #777;
+  transition: all 0.3s linear;
+}
+#toastNotification i.close:hover {
+  color: black;
+}
+
+/* =========== FOOTER ========== */
+footer {
+  text-align: center;
+  background-color: #bed6cb;
+  padding: 3rem 1rem;
+}
+
+/* Responsive Break point */
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Tablet */
+@media screen and (max-width: 860px) {
+  main {
+    grid-template-areas:
+      "form"
+      "shelf"
+      "progress";
+    gap: 0;
+  }
+  #form-section {
+    gap: 0;
+    margin-bottom: 2rem;
+  }
+
+  /* remove all box shadow */
+  #form-section .input-book-box,
+  #form-section .search-box,
+  #shelves-section,
+  #progress-section {
+    box-shadow: none;
+  }
+
+  /* Progress section */
+  #progress-section .progressBookList {
+    padding: 0 1rem;
+    flex-direction: row;
+  }
+
+  #progress-section .container {
+    width: 100%;
+    height: 12rem;
+  }
+  #progress-section .progressSlider {
+    top: 12px;
+    right: 3rem;
+    font-size: 2rem;
+    gap: 1rem;
+  }
+}
+
+/* Handphone */
+@media screen and (max-width: 420px) {
+  html {
+    font-size: 12px;
+  }
+
+  #form-section .input-book-box form {
+    grid-template-areas: "title" "author" "year" "isCompleted" "submit";
+  }
+
+  button[type="submit"] {
+    padding: 0.5rem 0.75rem;
+  }
+}

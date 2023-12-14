@@ -1,2 +1,3 @@
-# sinau-inbuku
-Final Project for Dicoding's Beginner Front-End Web Development Course
+# BookShelf
+# Muhammad Iqbal Nugraha
+Ini adalah submission dari kelas Dicoding "Belajar Membuat Front-End Web untuk Pemula" 

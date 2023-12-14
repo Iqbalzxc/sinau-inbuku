@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- fontAwesome for icon -->
+    <script
+      src="https://kit.fontawesome.com/a841d48ea8.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Bookshelf | Iqbalzxc</title>
+  </head>
+  <body>
+    <header>
+      <h1>Sinau-in Buku</h1>
+    </header>
+    <main>
+      <!-- Form Section -->
+      <section id="form-section">
+        <!-- input book to shelf -->
+        <div class="input-book-box">
+          <h2>Masukan Buku Baru</h2>
+          <form action="" id="input-book">
+            <div class="input">
+              <label for="inputBookTitle">Judul</label>
+              <input
+                type="text"
+                id="inputBookTitle"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="input">
+              <label for="inputBookAuthor">Penulis</label>
+              <input
+                type="text"
+                id="inputBookAuthor"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="input">
+              <label for="inputBookYear">Tahun</label>
+              <input
+                type="number"
+                id="inputBookYear"
+                required
+                autocomplete="off"
+              />
+            </div>
+            <div class="input-inline">
+              <input type="checkbox" name="" id="isComplete" />
+              <label for="isComplete">Selesai dibaca</label>
+            </div>
+            <button type="submit" id="inputBookSubmit">
+              Masukan buku ke rak <span class=""></span>
+            </button>
+          </form>
+        </div>
+        <!-- search books -->
+        <div class="search-box">
+          <h2>Cari buku</h2>
+          <form action="" id="searchBook">
+            <label for="searchBookTitle">judul</label>
+            <input
+              type="text"
+              name=""
+              id="searchBookTitle"
+              autocomplete="off"
+            />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Shelves Section -->
+      <section id="shelves-section">
+        <!-- Uncomplited shelf -->
+        <div class="book-shelf">
+          <h2>Belum Selesai dibaca</h2>
+          <div id="uncompletedBooks">
+            <!--<div class="book">
+							<img class="book-cover-img" src="assets/img/minimalist-poster.jpg" alt="book cover">
+							<div class="book-content">
+								<div class="book-info">
+									<h3 class="title">Naruto dan Teman teman berpetualang</h3>
+									<span>author: Masashi Kishimoto</span>
+									<span>tahun: 200</span>
+								</div>
+								<div class="intract-btn">
+									<span class="btn edit">edit</span>
+									<span class="btn finish">Selesai</span>
+									<span class="btn remove">hapus</span>
+								</div>
+							</div>
+						</div> -->
+          </div>
+          <div class="slider uncompletedSlider">
+            <i class="fa-solid fa-arrow-left left-slide"></i>
+            <i class="fa-solid fa-arrow-right right-slide"></i>
+          </div>
+        </div>
+
+        <!-- Completed shelf -->
+        <div class="book-shelf">
+          <h2>Selesai dibaca</h2>
+          <div id="completedBooks">
+            <!-- <div class="book">
+							<img class="book-cover-img" src="assets/img/minimalist-poster.jpg" alt="book cover">
+							<div class="book-content">
+								<div class="book-info">
+									<h3 class="title">Naruto dan Teman teman berpetualang</h3>
+									<span>author: Masashi Kishimoto</span>
+									<span>tahun: 200</span>
+								</div>
+								<div class="intract-btn">
+									<span class="btn edit">edit</span>
+									<span class="btn finish">Belum Selesai</span>
+									<span class="btn remove">hapus</span>
+								</div>
+							</div>
+						</div> -->
+          </div>
+          <div class="slider completedSlider">
+            <i class="fa-solid fa-arrow-left left-slide"></i>
+            <i class="fa-solid fa-arrow-right right-slide"></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- Progress Section -->
+      <section id="progress-section">
+        <h2>Progress</h2>
+        <div class="container progress-container">
+          <div class="progressBookList" id="progressBookList">
+            <!--<div class="progress-card card">
+							<img class="progress-img" src="assets/img/minimalist-poster.jpg" alt="book cover">
+							<div class="progress-content">
+								<h3>Naruto</h3>
+								<span>15/100 pages</span>
+							</div>
+						</div> -->
+          </div>
+        </div>
+        <div class="slider progressSlider">
+          <i class="fa-solid fa-arrow-up left-slide"></i>
+          <i class="fa-solid fa-arrow-down right-slide"></i>
+        </div>
+      </section>
+
+      <!-- Modal for editing book details -->
+      <div id="editModal" class="modal">
+        <i class="fa-solid fa-xmark edit-close-btn"></i>
+        <h2>Edit Book Details</h2>
+        <form action="" id="editBook">
+          <div class="input">
+            <label for="editTitle">Title:</label>
+            <input type="text" id="editTitle" autocomplete="off" />
+          </div>
+          <div class="input">
+            <label for="editAuthor">Author:</label>
+            <input type="text" id="editAuthor" autocomplete="off" />
+          </div>
+          <div class="input">
+            <label for="editAuthor">Year:</label>
+            <input type="text" id="editYear" autocomplete="off" />
+          </div>
+          <button class="btn modal-btn" type="submit">Simpan Perubahan</button>
+        </form>
+      </div>
+    </main>
+
+    <ul id="toastNotification"></ul>
+    <footer>
+      <p>
+        Dicoding Bookshelf Submission |
+        <span>&copy; 2023 Muhammad Iqbal Nugraha</span>
+      </p>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
